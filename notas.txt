@@ -1,0 +1,27 @@
+CRUD -> Create Read Update Delete
+
+Controlador/Modelo -> clases 
+
+migrate database: php artisan migrate
+
+- Model, Controller & Resource
+
+    - new model -> php artisan make:model Empleado -mcr
+
+    - sistema/routes/web.php permite manipular todas las rutas de la paginas
+
+--->>> laravel funcion para nmo eleiminar valores de una  tabla, borrado logico 
+
+Tarea de hoy 22 de junio 2022
+-> empleado con equipos
+    - poder crear equipos, cada equipo debe tener empleados, un empleado puede estar en uno o varios equipos, relaciones uno a muchos en laravel.
+
+Se accede mediante clases, estan son controladas por los controladores
+
+ver rutas activas: php artisan route:list
+
+RELACION DE TABLAS, DEL INDICE A LA LLAVE FORANEA
+
+crear migracion php artisan make:migration create_nombre_table
+
+Crear repositorio github
