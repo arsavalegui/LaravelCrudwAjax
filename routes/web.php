@@ -26,6 +26,8 @@ Route::get('/empleado/create',[EmpleadoController::class,'create']); // /ruta,cl
 
 Route::resource('empleado', EmpleadoController::class); // acceder a todas las url y trabajar mas comodamente con los metodos de empleado controller
 
+Route::post('/empleados/store',[EmpleadoController::class, 'ajax']);
+
 Auth::routes();
 
 Route::get('/home', [EmpleadoController::class, 'index'])->name('home');

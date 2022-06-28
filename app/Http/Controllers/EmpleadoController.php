@@ -6,9 +6,37 @@ use App\Models\Empleado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Equipo;
+use Illuminate\Support\Facades\Validator;
 
 class EmpleadoController extends Controller
 {
+    
+    public function ajax(Request $request){
+
+        $input = $request->only(['Correo']);
+
+        $request_data = [
+            'Correo' => 'required|email|unique:empleados,Correo',
+        ];
+
+        $validator = Validator::make($input, $request_data);
+
+        // json is null
+        if ($validator->fails()) {
+            $errors = json_decode(json_encode($validator->errors()), 1);
+            return response()->json([
+                'success' => false,
+                'message' => array_reduce($errors, 'array_merge', array()),
+            ]);
+        } else {
+            return response()->json([
+                'success' => true,
+                'message' => 'The email is available'
+            ]);
+        }
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -62,18 +90,15 @@ class EmpleadoController extends Controller
      * @param  \App\Models\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
         // --->>> Agregar empleados en muchos y equipos y relacion modelos empleado equipos para mostrar cada empleado con sus equipos.
         // --->>> Agregar a migraciones llaves foraneas
         // --->>> ROLLBACK INVESTIGAR
 
-        //$datosEmpleado = request()->except('_token');
-        //$datosEquipo = request()->except('_token');
-
-        $empleado = Empleado::findOrFail($id);
-        return view('empleado.show', compact('Empleado')); 
+        $datos['empleados']=Empleado::paginate(5);
+        return view('empleado.show', $datos);
 
     }
 

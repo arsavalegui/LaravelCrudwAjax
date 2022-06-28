@@ -25,3 +25,11 @@ RELACION DE TABLAS, DEL INDICE A LA LLAVE FORANEA
 crear migracion php artisan make:migration create_nombre_table
 
 Crear repositorio github
+
+server : controllers
+
+navegador : vistas
+
+BASE DE DATOS: De los equipos del empleado, traer los datos necesarios del equipo 
+
+Como manipular y que es un objeto json 

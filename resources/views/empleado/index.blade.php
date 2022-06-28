@@ -29,7 +29,7 @@
             <tr>
                 <td>{{$empleado->id}}</td>
                 <td>
-                <img src="{{ asset('storage/').$empleado->Foto }}" width="100" alt="">  
+                <img src="{{ asset('storage/app/public').'/'.$empleado->Foto }}" width="100" alt="">  
                 
                 </td>
                 <td>{{$empleado->Nombre}}</td>
@@ -38,9 +38,7 @@
                 <td>{{$empleado->Correo}}</td>
                 <td>
                     
-                    <a  href="{{ url('/empleado/'.$empleado->id.'/show') }}"> 
-                        Ver empleado
-                    </a>
+                    <a href="{{ url('empleado/show') }}"> Ver empleado </a>
 
                     <br>
 
